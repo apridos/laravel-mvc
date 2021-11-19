@@ -13,4 +13,8 @@ class BestFriend extends Model
     // attributes that assignable
     protected $fillable = ['name', 'favorite_food'];
 
+    public static function getFirstTwoBestFriends(){
+        return static::all()->take(2);
+    }
+
 }

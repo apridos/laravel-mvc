@@ -35,14 +35,34 @@ class BestFriendController extends Controller
     }
 
     public function getFirstTwoBestFriends(){
-        //
+        
+        $data = [
+            'friends' => BestFriend::getFirstTwoBestFriends(),
+        ];
+
+        return view('friend.all', $data);
     }
 
-    public function updateABestFriend(){
-        //
+    public function updateABestFriend(Request $request){
+
+        $this->validate($request, [
+            'name' => 'required',
+            'favorite_food' => 'required'
+        ]);
+
+        BestFriend::where('id', $request->id)->update(
+            [
+                "name" => $request->name,
+                "favorite_food" => $request->favorite_food
+            ]
+        );
+        
+        return redirect('/allFriends');
     }
 
-    public function deleteABestFriend(){
-        //
+    public function deleteABestFriend(Request $request){
+        BestFriend::where('id', $request->id)->delete();
+
+        return redirect('/allFriends');
     }
 }

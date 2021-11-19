@@ -19,8 +19,15 @@ Route::get('/', function () {
 });
 
 Route::get('/addAFriend', [BestFriendController::class, 'addABestFriendView']);
+
 Route::post('/addAFriend', [BestFriendController::class, 'addABestFriend']);
 
 Route::get('/allFriends', [BestFriendController::class, 'getAllBestFriends']);
+
+Route::post('/updateAFriend', [BestFriendController::class, 'updateABestFriend']);
+
+Route::get('/deleteAFriend/{id}', [BestFriendController::class, 'deleteABestFriend']);
+
+Route::get('/firstTwoFriend', [BestFriendController::class, 'getFirstTwoBestFriends']);
 
 
